@@ -46,11 +46,11 @@ var addTask = function(title, dueDate, assignees) {
 	}
 }
 
-var deleteTask = function(task) {
-	console.log("delete!");
-	var list = document.querySelector('#taskList');
-	list.removeChild(task);
-}
+// var deleteTask = function(task) {
+// 	console.log("delete!");
+// 	var list = document.querySelector('#taskList');
+// 	list.removeChild(task);
+// }
 
 var markComplete = function(task) {
 	console.log("complete!");
