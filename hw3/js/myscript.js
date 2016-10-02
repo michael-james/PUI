@@ -28,7 +28,6 @@ var addTask = function(title, dueDate, assignees) {
 		var dateLabel = document.createElement('span');
 		dateLabel.setAttribute("id", "dateLabel");
 		dateLabel.setAttribute("class", "label label-default pull-right");
-		task.addEventListener("click", function(){ markComplete(this); });
 		dateLabel.appendChild(document.createTextNode(dueDate));
 		task.appendChild(dateLabel);
 
