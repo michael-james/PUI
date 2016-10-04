@@ -12,15 +12,17 @@ var addTask = function(title, dueDate, assignees) {
 		task.appendChild(document.createTextNode(title));
 		task.setAttribute("type", "button");
 		task.setAttribute("id", "task");
-		task.addEventListener("click", function(){ markComplete(this); });
+		task.addEventListener("click", function(){ doSomething(this, event); });
 
 		var closeBtn = document.createElement('BUTTON');
 		closeBtn.setAttribute("class", "close");
 		closeBtn.setAttribute("aria-label", "Close");
+		closeBtn.setAttribute("id", "close");
 		closeBtn.style.paddingLeft = "5px";
-		closeBtn.addEventListener("click", function(){ deleteTask(this.parentElement); });
+		closeBtn.addEventListener("click", function(){ doSomething(this, event); });
 		var closeSpan = document.createElement('span');
 		closeSpan.setAttribute("aria-hidden", "true");
+		closeSpan.setAttribute("id", "close");
 		closeSpan.innerHTML = "&times;";
 		closeBtn.appendChild(closeSpan);
 		task.appendChild(closeBtn);
@@ -45,11 +47,22 @@ var addTask = function(title, dueDate, assignees) {
 	}
 }
 
-// var deleteTask = function(task) {
-// 	console.log("delete!");
-// 	var list = document.querySelector('#taskList');
-// 	list.removeChild(task);
-// }
+var doSomething = function(selElem, event) {
+	// if the close button was selected
+	if (selElem.className == 'close') {
+		deleteTask(selElem.parentElement);
+	}
+	// don't mark a task complete if the close button was selected
+	else if (event.target.id != 'close') {
+		markComplete(selElem);
+	}
+}
+
+var deleteTask = function(task) {
+	console.log("delete!");
+	var list = document.querySelector('#taskList');
+	list.removeChild(task);
+}
 
 var markComplete = function(task) {
 	console.log("complete!");
