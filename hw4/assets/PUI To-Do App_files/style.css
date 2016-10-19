@@ -28,10 +28,10 @@ img {
 }
 
 .circle {
-    width: 55px;
-    height: 55px;
+    width: 100px;
+    height: 100px;
     border-radius: 50px;
-    background-size: 75px;   
+    background-size: 150px;   
     background-repeat: no-repeat;
     background-position: 50%;
 }
@@ -42,28 +42,4 @@ div.relative {
 
 div.fixed {
 	position: fixed;
-}
-
-section {
-    width: 80%;
-    height: 200px;
-    background: aqua;
-    margin: auto;
-    padding: 10px;
-}
-
-div#profile {
-    width: 75px;
-    /*background: red;*/
-    float: left;
-}
-div#task {
-    /*margin-left: 75px;*/
-    background: white;
-    float: left;
-}
-div#due {
-    right: 15px;
-    position: fixed;
-    background: white;
 }
