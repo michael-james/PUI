@@ -12,6 +12,7 @@
     
     <!-- my CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -72,7 +73,7 @@
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+      </div><!--  /.container-fluid -->
     </nav>
 
    <!--  <div class="container">
@@ -81,36 +82,6 @@
     </div> -->
 
     <div class="container">
-      <!-- <div id="one"></div> -->
-      <!-- <div id="two"></div> -->
-      <div id="profile">
-        <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-      </div> 
-      <div id="task">paint porch</div>
-      <div id="due">Today</div>
-    </div>
-
-    <div class="container">
-      <!-- <div id="one"></div> -->
-      <!-- <div id="two"></div> -->
-      <div id="profile">
-        <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-      </div> 
-      <div id="task">paint porch</div>
-      <div id="due">Today</div>
-    </div>
-
-    <div class="container">
-      <!-- <div id="one"></div> -->
-      <!-- <div id="two"></div> -->
-      <div id="profile">
-        <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-      </div> 
-      <div id="task">paint porch</div>
-      <div id="due">Today</div>
-    </div>
-
-<!--     <div class="container">
       <p></p>
       <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Task
@@ -139,16 +110,49 @@
             <button type="button" class="btn btn-default" onclick="addTask()" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Create</button>
           </form>
         </div>
-      </div> -->
+      </div>
+    </div>
+
+    <p></p>
+
+    <!-- task list -->
+
+    <div id="taskList">
+
+      <div class="container taskrow">
+        <div id="profile">
+          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
+        </div> 
+        <div id="task">paint porch</div>
+        <div id="due">Today</div>
+        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
+        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
+      </div>
+
+      <div class="container taskrow">
+        <div id="profile">
+          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
+        </div> 
+        <div id="task">paint porch</div>
+        <div id="due">Today</div>
+      </div>
+
+      <div class="container taskrow">
+        <div id="profile">
+          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
+        </div> 
+        <div id="task">paint porch</div>
+        <div id="due">Today</div>
+      </div>
+    </div>
 
       <p></p>
 
-      <div class="list-group" id="taskList""></div>
+      <!-- <div class="list-group" id="taskList""></div> -->
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
