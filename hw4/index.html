@@ -25,14 +25,14 @@
     <div class="container my-nav">
       <div class="title">My Tasks</div>
       <div class="plus">
-        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseadd">
+          <span class="glyphicon glyphicon-plus"></span>
         </button>
       </div>
     </div>
 
     <div class="container addTask">      
-      <div class="collapse" id="collapseExample">
+      <div class="collapse" id="collapseadd">
         <div class="addTask-pad">
           <form id="addTaskForm">
             <div class="form-group">
@@ -49,156 +49,31 @@
               <label for="taskAssignees">
                 Assignee(s) <span class="optional">- Optional</span>
               </label>
-              <input type="text" class="form-control" id="taskAssignees" placeholder="Sarah">
+                <select name="Assignee" class="form-control" form="addTaskForm" id="taskAssignee" placeholder="Choose one">
+                  <option>Michael</option>
+                  <option>Rebecca</option>
+                  <option>Robert</option>
+                  <option>Sara</option>
+                  <option>Tim</option>
+                </select>
             </div>
-            <button type="button" class="btn btn-default" onclick="addTask()" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Create</button>
+            <div class="form-group float-left">
+              <label class="checkbox-inline">
+                <input type="checkbox" id="taskAttach" value="option1"> Attachments?
+              </label>
+            </div>
+            <div class="form-group pad">
+              <label class="checkbox-inline">
+                <input type="checkbox" id="taskPriority" value="option1"> High Priority?
+              </label>
+            </div>
+            <button id="create" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseadd">Create</button>
           </form>
         </div>
       </div>
     </div>
 
-    <!-- task list -->
-
-    <div id="taskList">
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-
-      <div class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-      </div>
-
-      <div class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-      </div>
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-
-      <div id="test" class="container taskrow">
-        <div id="profile">
-          <div class="circle" style="background-image: url(assets/p.jpg)"></div>
-        </div> 
-        <div id="task">paint porch</div>
-        <div id="due">Today</div>
-        <div id="attach"><img id="attach-icon" src="assets/attach.svg" height="23px"/> 2</div>
-        <div id="priority" class="pad-detail"><img id="priority-icon" src="assets/high.svg" height="15px"/></div>
-      </div>
-    </div>
-      <!-- <div class="list-group" id="taskList""></div> -->
-    </div>
+    <div id="taskList"></div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

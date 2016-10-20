@@ -3,92 +3,95 @@
 
 $(document).ready(function(){
     $(".taskrow").on("click", complete);
-    // $(".taskrow").hover(function() {$(this).toggleClass("task-hover");}, function() {$(this).toggleClass("task-hover");})
-})
+    $("#create").on("click", getFormVals);
+});
 
 function complete() {
-	$(this).addClass("complete");
-	$(this).delay(50).animate({left: -$(document).width()}, 500, function() {$(this).fadeOut();});
+	$(this).addClass("complete").delay(50).animate({left: -$(document).width()}, 500, function() {$(this).fadeOut().remove();});
 }
 
-// javascript
+function getFormVals() {
+	// get values
+	var titleVal = $("#taskTitle").val();
+	var dueVal = $("#taskDueDate").val();
+	var assignee = $("#taskAssignee").val();
+	var hasAttach = $("#taskAttach").is(":checked");
+	var hasPriority = $("#taskPriority").is(":checked");
 
-var addTask = function(title, dueDate, assignees) {
-	var list = document.querySelector('#taskList');
-	var task = document.createElement('BUTTON');
-	if (title == undefined) {
-		var title = document.querySelector('#taskTitle').value;
-		var dueDate = document.querySelector('#taskDueDate').value;
-		var assignees = document.querySelector('#taskAssignees').value;
+	add(titleVal, dueVal, assignee, hasAttach, hasPriority);
+}
+
+function add (titleVal, dueVal, assignee, hasAttach, hasPriority) {
+	var task = $("<div>", {"class": "container taskrow"});
+
+	// set image
+	var image;
+	switch (assignee) {
+		case "Michael": 
+			image = "1";
+			break;
+		case "Rebecca": 
+			image = "2";
+			break;
+		case "Robert": 
+			image = "3";
+			break;
+		case "Sara": 
+			image = "4";
+			break;
+		case "Tim": 
+			image = "5";
+			break;
+		case "":
+			image = false
 	}
-	
-	if (title != "") {
-		task.appendChild(document.createTextNode(title));
-		task.setAttribute("type", "button");
-		task.setAttribute("id", "task");
-		task.addEventListener("click", function(){ doSomething(this, event); });
 
-		var closeBtn = document.createElement('BUTTON');
-		closeBtn.setAttribute("class", "close");
-		closeBtn.setAttribute("aria-label", "Close");
-		closeBtn.setAttribute("id", "close");
-		closeBtn.style.paddingLeft = "5px";
-		closeBtn.addEventListener("click", function(){ doSomething(this, event); });
-		var closeSpan = document.createElement('span');
-		closeSpan.setAttribute("aria-hidden", "true");
-		closeSpan.setAttribute("id", "close");
-		closeSpan.innerHTML = "&times;";
-		closeBtn.appendChild(closeSpan);
-		task.appendChild(closeBtn);
-		
-		var dateLabel = document.createElement('span');
-		dateLabel.setAttribute("id", "dateLabel");
-		dateLabel.setAttribute("class", "label label-default pull-right");
-		dateLabel.appendChild(document.createTextNode(dueDate));
-		task.appendChild(dateLabel);
+	// assignee
+	var profile = $("<div>", {"class": "task-profile"});
+	var profileImg = $("<div>", {"class": "circle", "style": "background-image: url(assets/prof/" + image + ".jpg)"});
+	console.log(image);
+	profile.append(profileImg);
 
-		if (assignees != undefined) {
-			var assigneesLabel = document.createElement('span');
-			assigneesLabel.setAttribute("id", "assigneesLabel");
-			assigneesLabel.setAttribute("class", "label label-primary pull-right");
-			assigneesLabel.appendChild(document.createTextNode(assignees));
-			task.appendChild(assigneesLabel);
-		}
-
-		task.setAttribute("class", "list-group-item");
-		list.appendChild(task);
-		document.querySelector("#addTaskForm").reset();
+	// title
+	if (titleVal.length != 0) {
+		var title = $("<div>", {"class": "task-title"});
+		title.append(titleVal);
 	}
-}
 
-var doSomething = function(selElem, event) {
-	// if the close button was selected
-	if (selElem.className == 'close') {
-		deleteTask(selElem.parentElement);
+	// due
+	if (dueVal.length != 0) {
+		var due = $("<div>", {"class": "task-due"});
+		due.append(dueVal);
 	}
-	// don't mark a task complete if the close button was selected
-	else if (event.target.id != 'close') {
-		markComplete(selElem);
+
+	// attach
+	if (hasAttach) {
+		var attach = $("<div>", {"class": "task-attach"});
+		var attachIcon = $("<img>", {"id": "attach-icon", "src": "assets/attach.svg", "height": "23px"});
+		attach.append(attachIcon);
+		attach.append(" 2");
 	}
+
+	// priority
+	if (hasPriority) {
+		var priority = $("<div>", {"class": "task-attach"});
+		var priorityIcon = $("<img>", {"id": "priority-icon", "src": "assets/high.svg", "height": "15px"});
+		priority.append(priorityIcon);
+	}
+
+	task.append(profile, title, due, attach, priority);
+	task.on("click", complete);
+	$("#taskList").prepend(task);
 }
 
-var deleteTask = function(task) {
-	console.log("delete!");
-	var list = document.querySelector('#taskList');
-	list.removeChild(task);
-}
-
-var markComplete = function(task) {
-	console.log("complete!");
-	task.setAttribute("class", "list-group-item list-group-item-success");
-	task.querySelector("#dateLabel").setAttribute("class", "label label-success pull-right");
-
-	var list = document.querySelector('#taskList');
-	list.appendChild(task);
-}
+// demo tasks
+add("wash the dishes", "Tomorrow", "", false, false);
+add("take out garbage", "Today", "Michael", true, true);
+add("paint porch", "Today", "Sara", false, false);
 
 // addTask('take out the garbage', 'Today');
 // addTask('wash the dishes', 'Tomorrow');
 // addTask('do laundry', 'Oct 3', 'Michael');
 // addTask('clean up office', 'Oct 5');
 // addTask('buy a cake', 'Oct 10');
+

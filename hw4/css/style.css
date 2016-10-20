@@ -16,7 +16,7 @@ body {
 }
 
 .my-nav {
-	background: rgb(245, 245, 245);
+	background: #70198A;
 	display: table;
 	height: 56px;
 	width: 100%;
@@ -27,7 +27,7 @@ body {
 }
 
 .title {
-	color: rgba(0, 0, 0, 0.87);
+	color: #FFF;
 	font-size: 20pt;
 	font-weight: bold;
 	display: table-cell;
@@ -42,7 +42,7 @@ body {
 }
 
 .addTask {
-	background-color: rgba(132, 213, 205, 0.24);
+	background-color: #F6F1F8;
 	/*box-shadow: inset 0px -4px 4px 0px rgba(0, 0, 0, 0.24);*/
 }
 
@@ -56,33 +56,42 @@ body {
 	font-size: 80%;
 }
 
+.float-left {
+	float: left;
+	width: 130px;
+}
+
+.pad {
+	margin-left: 130px;
+}
+
 /*images*/
 
 .circle {
     width: 40px;
     height: 40px;
     border-radius: 50px;
-    background-size: 60px;   
+    background-size: 55px;   
     background-repeat: no-repeat;
     background-position: 50%;
 }
 
-div#profile {
+.task-profile {
     width: 58px;
     float: left;
 }
-div#task {
+.task-title {
 	height: 30px;
     float: left;
     font-size: 16pt;
 }
-div#due {
+.task-due {
 	height: 30px;
     text-align: right;
     padding-top: 4px;
 }
 
-div#attach {
+.task-attach {
 	padding-left: 0px;
 	float: left;
 }
@@ -112,7 +121,7 @@ div#taskList {
 }
 
 .complete {
-	background-color: lightgreen;
+	background-color: #C1EA9F;
 }
 
 /*other*/
