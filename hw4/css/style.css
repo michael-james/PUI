@@ -15,6 +15,20 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
+.my-nav {
+	background-color: #000000;
+	opacity: 0.12;
+	/*width: screen.width + "px";*/
+	height: 50px;
+}
+
+.title {
+	color: #000000;
+	opacity: 0.87;
+	size: 20pt;
+	font-weight: normal;
+}
+
 .label {
 	font-size: 80%;
 }
@@ -32,7 +46,6 @@ body {
 
 div#profile {
     width: 58px;
-    height: 72px;
     float: left;
 }
 div#task {
@@ -60,7 +73,8 @@ div#attach {
 }
 
 .taskrow {
-	/*padding-bottom: 20px;*/
+	padding-top: 5px;
+	height: 72px;
 }
 
 /*other*/
