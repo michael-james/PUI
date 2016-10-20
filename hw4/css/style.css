@@ -11,22 +11,45 @@ div.fixed {
 /*global*/
 
 body {
-	/*padding-top: 65px;*/
+	padding-top: 56px;
 	font-family: 'Roboto', sans-serif;
 }
 
 .my-nav {
-	background-color: #000000;
-	opacity: 0.12;
-	/*width: screen.width + "px";*/
-	height: 50px;
+	background: rgb(245, 245, 245);
+	display: table;
+	height: 56px;
+	width: 100%;
+	z-index: 1;
+	top: 0;
+	position: fixed;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.24);
 }
 
 .title {
-	color: #000000;
-	opacity: 0.87;
-	size: 20pt;
-	font-weight: normal;
+	color: rgba(0, 0, 0, 0.87);
+	font-size: 20pt;
+	font-weight: bold;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.plus {
+	display: table-cell;
+	vertical-align: middle;
+	right: 0px;
+	width: 40px;
+}
+
+.addTask {
+	background-color: rgba(132, 213, 205, 0.24);
+	/*box-shadow: inset 0px -4px 4px 0px rgba(0, 0, 0, 0.24);*/
+}
+
+.addTask-pad {
+	/*margin-top: 15px*/
+	padding: 15px 0 15px 0;
+	/*border-bottom: 1px solid rgba(0, 0, 0, 0.24);*/
 }
 
 .label {
@@ -56,6 +79,7 @@ div#task {
 div#due {
 	height: 30px;
     text-align: right;
+    padding-top: 4px;
 }
 
 div#attach {
@@ -68,13 +92,27 @@ div#attach {
 	float: left;
 }
 
-.float-left {
-	float: left;
+div#taskList {
+	/*position: relative;*/
+	/*height: 100% - 56px;*/
+	padding-top: 10px;
+	/*margin-top: 56px;*/
+	/*z-index: -1;*/
 }
 
 .taskrow {
 	padding-top: 5px;
+	padding-bottom: 5px;
 	height: 72px;
+	position: relative;
+}
+
+.task-hover {
+	background-color: rgba(0, 0, 0, 0.12);
+}
+
+.complete {
+	background-color: lightgreen;
 }
 
 /*other*/

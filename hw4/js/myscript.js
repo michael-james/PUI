@@ -1,4 +1,18 @@
 
+// jQuery
+
+$(document).ready(function(){
+    $(".taskrow").on("click", complete);
+    // $(".taskrow").hover(function() {$(this).toggleClass("task-hover");}, function() {$(this).toggleClass("task-hover");})
+})
+
+function complete() {
+	$(this).addClass("complete");
+	$(this).delay(50).animate({left: -$(document).width()}, 500, function() {$(this).fadeOut();});
+}
+
+// javascript
+
 var addTask = function(title, dueDate, assignees) {
 	var list = document.querySelector('#taskList');
 	var task = document.createElement('BUTTON');
