@@ -15,6 +15,91 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
+.label {
+	font-size: 80%;
+}
+
+.float-left {
+	float: left;
+	width: 130px;
+}
+
+/*images*/
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background-size: 55px;   
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+/*common elements*/
+
+.task-profile {
+    width: 58px;
+    float: left;
+}
+.task-title {
+	height: 30px;
+    float: left;
+    font-size: 16pt;
+}
+.task-due {
+	height: 30px;
+    text-align: right;
+    padding-top: 4px;
+}
+
+.task-attach {
+	padding-left: 0px;
+	float: left;
+}
+
+.pad-detail {
+	padding-left: 10px;
+	float: left;
+}
+
+.taskrow {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: 72px;
+	position: relative;
+}
+
+.task-hover {
+	background-color: rgba(0, 0, 0, 0.12);
+}
+
+.complete {
+	background-color: #C1EA9F;
+}
+
+.new {
+	background-color: #F6F1F8;
+}
+
+.pad {
+	margin-left: 130px;
+}
+
+.done {
+	padding-top: 5px;
+	text-align: center;
+	font-style: italic;
+	color: rgba(0, 0, 0, 0.54);
+}
+
+.error {
+	padding-top: 5px;
+	text-align: center;
+	color: rgba(255, 0, 0, 0.54);
+}
+
+/*specific elements*/
+
 .my-nav {
 	background: #70198A;
 	display: table;
@@ -43,85 +128,14 @@ body {
 
 .addTask {
 	background-color: #F6F1F8;
-	/*box-shadow: inset 0px -4px 4px 0px rgba(0, 0, 0, 0.24);*/
 }
 
 .addTask-pad {
-	/*margin-top: 15px*/
 	padding: 15px 0 15px 0;
-	/*border-bottom: 1px solid rgba(0, 0, 0, 0.24);*/
-}
-
-.label {
-	font-size: 80%;
-}
-
-.float-left {
-	float: left;
-	width: 130px;
-}
-
-.pad {
-	margin-left: 130px;
-}
-
-/*images*/
-
-.circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    background-size: 55px;   
-    background-repeat: no-repeat;
-    background-position: 50%;
-}
-
-.task-profile {
-    width: 58px;
-    float: left;
-}
-.task-title {
-	height: 30px;
-    float: left;
-    font-size: 16pt;
-}
-.task-due {
-	height: 30px;
-    text-align: right;
-    padding-top: 4px;
-}
-
-.task-attach {
-	padding-left: 0px;
-	float: left;
-}
-
-.pad-detail {
-	padding-left: 10px;
-	float: left;
 }
 
 div#taskList {
-	/*position: relative;*/
-	/*height: 100% - 56px;*/
 	padding-top: 10px;
-	/*margin-top: 56px;*/
-	/*z-index: -1;*/
-}
-
-.taskrow {
-	padding-top: 5px;
-	padding-bottom: 5px;
-	height: 72px;
-	position: relative;
-}
-
-.task-hover {
-	background-color: rgba(0, 0, 0, 0.12);
-}
-
-.complete {
-	background-color: #C1EA9F;
 }
 
 /*other*/

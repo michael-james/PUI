@@ -22,8 +22,10 @@
     <![endif]-->
   </head>
   <body>
+
+    <!-- nav -->
     <div class="container my-nav">
-      <div class="title">My Tasks</div>
+      <div class="title">Family Tasks</div>
       <div class="plus">
         <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseadd">
           <span class="glyphicon glyphicon-plus"></span>
@@ -31,6 +33,7 @@
       </div>
     </div>
 
+    <!-- add task pane -->
     <div class="container addTask">      
       <div class="collapse" id="collapseadd">
         <div class="addTask-pad">
@@ -47,9 +50,10 @@
             </div>
             <div class="form-group">
               <label for="taskAssignees">
-                Assignee(s) <span class="optional">- Optional</span>
+                Assignee <span class="optional">- Optional</span>
               </label>
-                <select name="Assignee" class="form-control" form="addTaskForm" id="taskAssignee" placeholder="Choose one">
+                <select name="Assignee" class="form-control" form="addTaskForm" id="taskAssignee">
+                  <option>(none)</option>
                   <option>Michael</option>
                   <option>Rebecca</option>
                   <option>Robert</option>
@@ -73,7 +77,10 @@
       </div>
     </div>
 
-    <div id="taskList"></div>
+    <!-- task list -->
+    <div id="taskList">
+      <div id="done" class="done" style="opacity: 0">You finished all your tasks!</div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
