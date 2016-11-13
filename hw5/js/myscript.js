@@ -1,3 +1,4 @@
+// filtering
 $(".cat").on("click", function() {
 	var name = $(this).find("span");
 	var text = name.contents().filter(function() {
@@ -9,16 +10,23 @@ $(".cat").on("click", function() {
 	// move relevant items up to top using animation
 });
 
+// portfolio items
+$(".circle").on("click", function () {
+	alert("modal!");
+});
+
 $(".circle").hover(
 	function () {
-		$(".circle-overlay").css("opacity", "0.7");
-		console.log("ugh");
+		$(".circle-overlay").animate({opacity: "1"}, 300);
 	},
 	function () {
-		$(".circle-overlay").css("opacity", "0");
+		$(".circle-overlay").animate({opacity: "0"}, 300);
 	}
 );
 
+// $(window).on('resize orientationChange', function(event) {
+    
+// });
 
 
 // because I'm working with the physics library created by Mr. Doob,
