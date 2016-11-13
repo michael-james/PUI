@@ -246,6 +246,21 @@ function createInstructions() {
 	bodies.push( world.CreateBody(b2body) );	
 }
 
+var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height);
+    var img = document.getElementById("lamp")
+    var pat = ctx.createPattern(img, direction);
+    ctx.rect(0, 0, 150, 100);
+    ctx.fillStyle = pat;
+    ctx.fill();
+
+var test_background = new Image();
+test_background.src = '../assets/nature.jpg'; 
+test_background.onload = function(){
+    var pattern = context.createPattern(this, "repeat");
+};
+
 function createBall( x, y ) {
 
 	var x = x || Math.random() * stage[2];
@@ -273,6 +288,7 @@ function createBall( x, y ) {
 	for (var i = size; i > 0; i-= (size/num_circles)) {
 
 		graphics.fillStyle = theme[ (Math.random() * 4 >> 0) + 1];
+		// graphics.fillStyle = pattern;
 		graphics.beginPath();
 		graphics.arc(size * .5, size * .5, i * .5, 0, PI2, true); 
 		graphics.closePath();
@@ -297,8 +313,6 @@ function createBall( x, y ) {
 	b2body.linearVelocity.Set( Math.random() * 400 - 200, Math.random() * 400 - 200 );
 	bodies.push( world.CreateBody(b2body) );
 }
-
-//
 
 function loop() {
 

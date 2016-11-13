@@ -1,10 +1,10 @@
-var test_background = new Image();
-test_background.src = '../assets/nature.jpg'; 
-test_background.onload = function(){
-    var pattern = context.createPattern(this, "repeat");
-    context.fillStyle = pattern;
-    context.fill();
-};
+// var test_background = new Image();
+// test_background.src = '../assets/nature.jpg'; 
+// test_background.onload = function(){
+//     var pattern = context.createPattern(this, "repeat");
+//     context.fillStyle = pattern;
+//     context.fill();
+// };
 
 function createBall( x, y ) {
 
