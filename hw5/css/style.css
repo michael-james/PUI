@@ -1,0 +1,73 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+
+#my-name {
+	font-family: 'Nanum Brush Script', cursive;
+	font-size: 48pt;
+	position: fixed;
+	top: 75px;
+	text-align: center;
+	width: 100%;
+	color: black;
+	text-decoration: none
+}
+
+a:link {
+	color: black;
+    text-decoration: none;
+}
+
+a:visited {
+	color: black;
+    text-decoration: none;
+}
+
+a:hover {
+	color: rgb(75, 75, 75);
+    text-decoration: none;
+}
+
+a:active {
+	color: black;
+    text-decoration: none;
+}
+
+#categories {
+	top: 175px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	position: relative;
+	width: 855px;
+}
+
+.cat {
+	border: 2px solid gray;
+	width: 200px;
+	height: 75px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20pt;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	margin: 5px;
+	margin-bottom: 10px;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  /*top: 20%;*/
+  position: relative;
+  padding: 15px 0;
+}
+
+.circle {
+	border: 2px solid black;
+	width: 150px;
+	height: 150px;
+	position: fixed;
+	top: 500px;
+	left: 300px;
+	border-radius: 100%;
+	fill: ;
+}
