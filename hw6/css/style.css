@@ -4,7 +4,7 @@
 	font-family: 'Nanum Brush Script', cursive;
 	font-size: 48pt;
 	position: fixed;
-	top: 75px;
+	top: 50px;
 	text-align: center;
 	width: 100%;
 	color: black;
@@ -32,12 +32,11 @@ a:active {
 }
 
 #categories {
-	top: 175px;
-	margin-left: auto;
-	margin-right: auto;
+	top: 125px;
+	margin-left: 100px;
+	margin-right: 100px;
 	display: block;
 	position: relative;
-	width: 855px;
 }
 
 .cat {
