@@ -255,12 +255,6 @@ var c = document.getElementById("myCanvas");
     ctx.fillStyle = pat;
     ctx.fill();
 
-var test_background = new Image();
-test_background.src = '../assets/nature.jpg'; 
-test_background.onload = function(){
-    var pattern = context.createPattern(this, "repeat");
-};
-
 function createBall( x, y ) {
 
 	var x = x || Math.random() * stage[2];
@@ -285,15 +279,24 @@ function createBall( x, y ) {
 
 	var num_circles = Math.random() * 10 >> 0;
 
-	for (var i = size; i > 0; i-= (size/num_circles)) {
+	// create background
 
-		graphics.fillStyle = theme[ (Math.random() * 4 >> 0) + 1];
+	var img = new Image();
+
+	img.src = "assets/nature.jpg";
+		img.onload = function () {
+	    var pattern = graphics.createPattern(img, "repeat");
+	    graphics.fillStyle = pattern;
+	    for (var i = size; i > 0; i-= (size/num_circles)) {
+
+		// graphics.fillStyle = theme[ (Math.random() * 4 >> 0) + 1];
 		// graphics.fillStyle = pattern;
 		graphics.beginPath();
 		graphics.arc(size * .5, size * .5, i * .5, 0, PI2, true); 
 		graphics.closePath();
 		graphics.fill();
 	}
+	};
 
 	canvas.appendChild(element);
 
