@@ -22,14 +22,9 @@ section {
     /*padding-bottom: 50px;*/
 }
 
-span.span-title {
-	color: rgba(112, 89, 255, 1);
-	font-weight: 700;
-}
-
 .navbar-hidden {
-	top: -53px;
-	/*top: -83px;*/
+	/*top: -53px;*/
+	top: -83px;
 }
 
 .navbar-default {
@@ -156,19 +151,6 @@ a:hover {
 	border-bottom-color: rgba( 0,0,0,0.1);
 }
 
-#portrait {
-	width: 215px;
-}
-
-#portrait-cont {
-	float: none;
-	margin: 0px 20px 15px 0px;
-}
-
-/*#story-text {
-	overflow: hidden;
-}*/
-
 .work {
 	margin-top: 15px;
 }
@@ -283,10 +265,6 @@ footer.footer {
 
 	#story:hover a {
 		border-bottom-color: rgba( 0,0,0,0.1);
-	}
-
-	#portrait-cont {
-		float: left;
 	}
 
     header {
