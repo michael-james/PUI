@@ -23,6 +23,17 @@ $(document).ready(function(){
     } // End if
   });
 
+  // $(".work-item-pad").hover(
+  //   function(){
+  //     var info = $(".work-item-label");
+  //     info.css("opacit", "1");
+  //     console.log("show!");
+  //   },
+  //   function(){
+  //     info.css("opacity", "0");
+  //     console.log("hide!");
+  //   });
+
   // // borrowed from http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling?page=1&tab=votes#tab-top
   // function isScrolledIntoView(elem)
   // { 
