@@ -23,6 +23,42 @@ $(document).ready(function(){
     } // End if
   });
 
+  // // borrowed from http://stackoverflow.com/questions/14425300/scale-image-properly-but-fit-inside-div
+  // $('img').on('bestfit',function(){
+  //   var css;
+  //   var ratio=$(this).width() / $(this).height();
+  //   var pratio=$(this).parent().width() / $(this).parent().height();
+  //   if (ratio<pratio) css={width:'auto', height:'100%'};
+  //   else css={width:'100%', height:'auto'};
+  //   $(this).css(css);
+  // }).on('load', function(){
+  //     $(this).trigger('bestfit');
+  // }).trigger('bestfit');
+
+  // // get image size
+  // // borrowed from http://stackoverflow.com/questions/5106243/how-do-i-get-background-image-size-in-jquery
+  // var url = $('.work-item-pad').css('background-image').replace('url(', '').replace(')', '').replace("'", '').replace('"', '');
+  // var bgImg = $('<img />');
+  // bgImg.hide();
+
+  // bgImg.one("load", function() {
+  //   var height = bgImg.height();
+  //   console.log(url);
+  //   console.log(height);
+  // }).each(function() {
+  //   if(this.complete) $(this).load();
+  // });
+
+  // var img = new Image();
+  // img.src = $('body').css('background-image').replace(/url\(|\)$/ig, "");
+
+  // $(window).on("resize", function () {
+  //   $('body').height($('body').width() * img.height / img.width);
+  // }).resize(); 
+
+  // $('#myDiv').append(bgImg);
+  // bgImg.attr('src', url);
+
   // $(".work-item-pad").hover(
   //   function(){
   //     var info = $(".work-item-label");
@@ -85,11 +121,9 @@ var cbpAnimatedHeader = (function() {
   function scrollPage() {
     var sy = scrollY();
     if ( sy >= changeHeaderOn ) {
-      console.log("switch!");
       header.classList.remove('navbar-hidden');
     }
     else {
-      console.log("back...");
       header.classList.add('navbar-hidden');
     }
     didScroll = false;

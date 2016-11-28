@@ -191,6 +191,7 @@ a:hover {
 	height: 200px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	overflow: hidden;
 }
 
 .work-item-pad {
@@ -199,38 +200,40 @@ a:hover {
 	background: no-repeat center center;
 	background-size: cover;
 
-	-webkit-transition: background-size 400ms ease;
+	/*-webkit-transition: background-size 400ms ease;
   	transition: background-size 400ms ease;
-  	background-size: 100%;
+  	background-size: 100%;*/
+
+  	-moz-transition: all 400ms ease;
+  	-webkit-transition: all 400ms ease;
+  	transition: all 400ms ease;
+  	/*background-size: 100%;*/
+
+  	-moz-transform: scale(1,1);
+    -webkit-transform: scale(1,1);
+    transform: scale(1,1);
 }
 
 .work-item-pad:hover {
-  background-size: 110%;
+ 	/*background-size: 105%;*/
+	-moz-transform: scale(1.05,1.05);
+    -webkit-transform: scale(1.05,1.05);
+    transform: scale(1.05,1.05);
 }
 
-.work-item-label {
-	color: rgba(255, 255, 255, 0.8);
-}
-
-.work-overlay {
-	position: relative;
-	background-color: transparent;
-}
-
-.work-overlay::before {
+.work-item-overlay {
 	-webkit-transition: opacity 600ms ease;
 	-moz-transition: opacity 600ms ease;
 	transition: opacity 600ms ease;
 
-	background: background-color: rgba(0,0,0,0.3); /* For browsers that do not support gradients */
-	background: -webkit-radial-gradient(circle, transparent 30%, rgba(0,0,0,0.7)); /* Safari */
-	background: -o-radial-gradient(circle, transparent 30%, rgba(0,0,0,0.7)); /* Opera 11.6 to 12.0 */
-	background: -moz-radial-gradient(circle, transparent 30%, rgba(0,0,0,0.7)); /* Firefox 3.6 to 15 */
-	background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.7)); /* Standard syntax */
+	background: background-color: rgba(0,0,0,0.5); /* For browsers that do not support gradients */
+	background: -webkit-radial-gradient(circle 50% 50%, transparent 20%, rgba(0,0,0,0.8)); /* Safari */
+	background: -o-radial-gradient(circle 50% 50%, transparent 20%, rgba(0,0,0,0.8)); /* Opera 11.6 to 12.0 */
+	background: -moz-radial-gradient(circle 50% 50%, transparent 20%, rgba(0,0,0,0.8)); /* Firefox 3.6 to 15 */
+	background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(0,0,0,0.8)); /* Standard syntax */
 
-	position: absolute;
-	content: "Solemates";
-	color: white;
+	position: relative;
+	/*content: "Solemates";*/
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -240,9 +243,24 @@ a:hover {
 	opacity: 0;
 }
 
-.work-overlay:hover::before {
+.work-item-overlay:hover {
 	/*background-color: rgba(255,255,255,0.4);*/
 	opacity: 1;
+}
+
+.work-item-label {
+	color: rgba(255, 255, 255, 1);
+	padding: 10px;
+	position: absolute;
+	bottom: 0;
+	font-size: 18pt;
+	font-weight: 700;
+}
+
+.work-item-label p {
+	font-size: 12pt;
+	font-weight: 400;
+	margin: 0;
 }
 
 .cross-desc {
