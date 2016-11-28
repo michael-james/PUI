@@ -209,7 +209,7 @@ a:hover {
 }
 
 .work-item-label {
-	color: rgba(0, 0, 0, 0.6);
+	color: rgba(255, 255, 255, 0.8);
 }
 
 .work-overlay {
@@ -229,7 +229,8 @@ a:hover {
 	background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.7)); /* Standard syntax */
 
 	position: absolute;
-	content: " ";
+	content: "Solemates";
+	color: white;
 	top: 0;
 	left: 0;
 	width: 100%;
