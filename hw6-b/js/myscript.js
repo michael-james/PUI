@@ -58,16 +58,16 @@ $(document).ready(function(){
 
   // $('#myDiv').append(bgImg);
   // bgImg.attr('src', url);
-
+  
+  // label animation from left
   // $(".work-item-pad").hover(
   //   function(){
-  //     var info = $(".work-item-label");
-  //     info.css("opacit", "1");
-  //     console.log("show!");
+  //     $(".work-item-label").animate({left: 0});
+  //     // console.log("show!");
   //   },
   //   function(){
-  //     info.css("opacity", "0");
-  //     console.log("hide!");
+  //     $(".work-item-label").animate({left: "-60%"});
+  //     // console.log("hide...");
   //   });
 
   // // borrowed from http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling?page=1&tab=votes#tab-top
@@ -89,7 +89,52 @@ $(document).ready(function(){
   // $(window).scroll(function(){
   //   console.log(isScrolledIntoView( $('#about') ));
   // });
+
+  // AUTOMATED SCROLL TO ABOUT
+  // // borrowed from http://blogs.sitepointstatic.com/examples/tech/animation-api/index.html
+  // var anim = document.getElementById("arrow-down"),
+  //     pfx = ["webkit", "moz", "MS", "o", ""];
+
+  // // animation listener events
+  // // PrefixedEvent(anim, "AnimationStart", AnimationListener);
+  // // PrefixedEvent(anim, "AnimationIteration", AnimationListener);
+  // PrefixedEvent(anim, "AnimationEnd", AnimationListener);
+
+
+  // // apply prefixed event handlers
+  // function PrefixedEvent(element, type, callback) {
+  //   for (var p = 0; p < pfx.length; p++) {
+  //     if (!pfx[p]) type = type.toLowerCase();
+  //     element.addEventListener(pfx[p]+type, callback, false);
+  //   }
+  // }
+
+  // var uh = 0;
+
+  // // handle animation events
+  // function AnimationListener(e) {
+  //   // LogEvent("Animation '"+e.animationName+"' type '"+e.type+"' at "+e.elapsedTime.toFixed(2)+" seconds");
+  //   if (e.type.toLowerCase().indexOf("animationend") >= 0) {
+  //     // LogEvent("Stopping animation...");
+
+  //     if (uh >= 1) {
+  //       console.log("let's go");
+  //       var hash = '#about';
+  //       $('html, body').animate({
+  //         scrollTop: $(hash).offset().top
+  //       }, 600, function(){
+     
+  //         // Add hash (#) to URL when done scrolling (default click behavior)
+  //         window.location.hash = hash;
+  //       });
+  //     }
+
+  //     uh += 1;
+  //   }
+  // }
 });
+
+new WOW().init();
 
 /**
  * cbpAnimatedHeader.js v1.0.0
