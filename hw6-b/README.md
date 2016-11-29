@@ -9,7 +9,6 @@ mobile
 content
 – write rest of ixd + drama blurbs
 – find icons for each ixd + drama point
-– shorten "my story"
 – standardize size of thumbnail images
 
 layout
