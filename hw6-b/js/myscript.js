@@ -23,6 +23,18 @@ $(document).ready(function(){
     } // End if
   });
 
+  // portrait
+
+  $('#portrait-cont').hover(
+    function() {
+      $("#portrait").attr("src","assets/me2.jpg");
+      // $('#portrait').animateCssFade('flipOutY');
+      // $('#portrait').animateCss('fadeOut');
+    }, function () {
+      $("#portrait").attr("src","assets/me.jpg");
+      // $('#portrait').animateCss('flipInY')
+  });
+
   // // borrowed from http://stackoverflow.com/questions/14425300/scale-image-properly-but-fit-inside-div
   // $('img').on('bestfit',function(){
   //   var css;
@@ -181,3 +193,25 @@ var cbpAnimatedHeader = (function() {
   init();
 
 })();
+
+
+// borrowed from 
+$.fn.extend({
+    animateCss: function (animationName, doOnEnd) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, function() {
+            $(this).removeClass('animated ' + animationName);
+        });
+    }
+});
+
+// borrowed from 
+$.fn.extend({
+    animateCssFade: function (animationName, doOnEnd) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, function() {
+            $(this).removeClass('animated ' + animationName);
+            $(this).animateCss('fadeOut');
+        });
+    }
+});
