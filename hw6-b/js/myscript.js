@@ -20,50 +20,16 @@ $(document).ready(function(){
         // Add hash (#) to URL when done scrolling (default click behavior)
         window.location.hash = hash;
       });
-    } // End if
+    }
   });
 
   // portrait
-
   $('#portrait-cont').hover(
     function() {
       $("#portrait").attr("src","assets/me2.jpg");
-      // $('#portrait').animateCssFade('flipOutY');
-      // $('#portrait').animateCss('fadeOut');
     }, function () {
       $("#portrait").attr("src","assets/me.jpg");
-      // $('#portrait').animateCss('flipInY')
   });
-
-
-  // // borrowed from http://stackoverflow.com/questions/3971841/how-to-resize-images-proportionally-keeping-the-aspect-ratio
-  //   $('.work-item-pad img').each(function() {
-  //       var imgContainer = $(".work-item-pad");
-  //       var maxWidth = $(imgContainer).width(); // Max width for the image
-  //       var maxHeight = $(imgContainer).height(); // Max height for the image
-  //       var ratio = 0;  // Used for aspect ratio
-  //       var width = $(this).width();    // Current image width
-  //       var height = $(this).height();  // Current image height
-  //       console.log(maxWidth, maxHeight);
-
-  //       // Check if the current width is larger than the max
-  //       if(width > maxWidth){
-  //           ratio = maxWidth / width;   // get ratio for scaling image
-  //           $(this).css("width", maxWidth); // Set new width
-  //           $(this).css("height", height * ratio);  // Scale height based on ratio
-  //           height = height * ratio;    // Reset height to match scaled image
-  //           width = width * ratio;    // Reset width to match scaled image
-  //       }
-
-  //       // Check if current height is larger than max
-  //       if(height > maxHeight){
-  //           ratio = maxHeight / height; // get ratio for scaling image
-  //           $(this).css("height", maxHeight);   // Set new height
-  //           $(this).css("width", width * ratio);    // Scale width based on ratio
-  //           width = width * ratio;    // Reset width to match scaled image
-  //           height = height * ratio;    // Reset height to match scaled image
-  //       }
-  //   });
 
   var currentContRatio = 0;
 
@@ -91,7 +57,22 @@ $(document).ready(function(){
     var fade = 0;
     if (anim) {fade = 400;}
 
-    // console.log(contRatio, imgRatio);
+    // custom image offsets
+    var x = 0,
+        y = 0;
+
+    if (contRatio > 3) {
+      // <= 992
+      x = parseInt(img.data('wx'));
+      y = parseInt(img.data('wy'));
+    } else {
+      // > 992
+      x = parseInt(img.data('nx'));
+      y = parseInt(img.data('ny'));
+    }
+
+    if (isNaN(x)) {x = 0;}
+    if (isNaN(y)) {y = 0;}
 
     var overlay = img.parent().find(".work-item-overlay");
     // console.log(overlay);
@@ -101,10 +82,11 @@ $(document).ready(function(){
     overlay.css("left", cont.position().left);
 
     if (contRatio > imgRatio) {
+      // image is stouter than container 
       var newWidth = contWidthScl;
       var newHeight = contWidthScl / imgRatio;
-      var offsetY = (newHeight - contHeight) / 2;
-      var offsetX = (newWidth - contWidth) / 2;
+      var offsetY = ((newHeight) - contHeight) / 2 - y;
+      var offsetX = ((newWidth) - contWidth) / 2 - x;
 
       $(img).animate({
         width: contWidthScl,
@@ -113,16 +95,11 @@ $(document).ready(function(){
         left: -offsetX
       }, fade);
     } else {
-      // $(img).css("width", contHeightScl * imgRatio);   // Set new height
-      // $(img).css("height", contHeightScl);    // Scale width based on ratio
-
-      // var offsetW = (contHeightScl / contRatio - contHeightScl) / 2;
-      // $(img).css("left", -offsetW);
-
+      // image is thinner than container
       var newWidth = contHeightScl * imgRatio;
       var newHeight = contHeightScl;contHeightScl
-      var offsetY = (newHeight - contHeight) / 2;
-      var offsetX = (newWidth - contWidth) / 2;
+      var offsetY = ((newHeight) - contHeight) / 2 - y;
+      var offsetX = ((newWidth) - contWidth) / 2 - x;
 
       $(img).animate({
         width: contHeightScl * imgRatio,
@@ -159,127 +136,18 @@ $(document).ready(function(){
   // borrowed from bootstrap
   // modal 
   $('#modal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  var image = button.find('img');
-  image.css("width", "100%");
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text(recipient)
-  modal.find('.modal-body #imghere').contents().remove();
-  image.clone().prependTo(modal.find('.modal-body #imghere'));
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var recipient = button.data('whatever');// Extract info from data-* attributes
+    var image = button.find('img');
+    image.css("width", "");
+    image.css("height", "");
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-title').text(recipient)
+    modal.find('.modal-body #imghere').contents().remove();
+    image.clone().prependTo(modal.find('.modal-body #imghere'));
   })
-
-  // // borrowed from http://stackoverflow.com/questions/14425300/scale-image-properly-but-fit-inside-div
-  // $('img').on('bestfit',function(){
-  //   var css;
-  //   var ratio=$(this).width() / $(this).height();
-  //   var pratio=$(this).parent().width() / $(this).parent().height();
-  //   if (ratio<pratio) css={width:'auto', height:'100%'};
-  //   else css={width:'100%', height:'auto'};
-  //   $(this).css(css);
-  // }).on('load', function(){
-  //     $(this).trigger('bestfit');
-  // }).trigger('bestfit');
-
-  // // get image size
-  // // borrowed from http://stackoverflow.com/questions/5106243/how-do-i-get-background-image-size-in-jquery
-  // var url = $('.work-item-pad').css('background-image').replace('url(', '').replace(')', '').replace("'", '').replace('"', '');
-  // var bgImg = $('<img />');
-  // bgImg.hide();
-
-  // bgImg.one("load", function() {
-  //   var height = bgImg.height();
-  //   console.log(url);
-  //   console.log(height);
-  // }).each(function() {
-  //   if(this.complete) $(this).load();
-  // });
-
-  // var img = new Image();
-  // img.src = $('body').css('background-image').replace(/url\(|\)$/ig, "");
-
-  // $(window).on("resize", function () {
-  //   $('body').height($('body').width() * img.height / img.width);
-  // }).resize(); 
-
-  // $('#myDiv').append(bgImg);
-  // bgImg.attr('src', url);
-  
-  // label animation from left
-  // $(".work-item-pad").hover(
-  //   function(){
-  //     $(".work-item-label").animate({left: 0});
-  //     // console.log("show!");
-  //   },
-  //   function(){
-  //     $(".work-item-label").animate({left: "-60%"});
-  //     // console.log("hide...");
-  //   });
-
-  // // borrowed from http://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling?page=1&tab=votes#tab-top
-  // function isScrolledIntoView(elem)
-  // { 
-  //   var docViewTop = $(window).scrollTop();
-  //   var docViewBottom = docViewTop + $(window).height();
-
-  //   var elemTop = $(elem).offset().top;
-  //   var elemBottom = elemTop + $(elem).height();
-
-  //   docViewTop = docViewTop + 10;
-
-  //   // return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-  //   return (elemTop >= docViewTop);
-  // }
-
-  // // scroll
-  // $(window).scroll(function(){
-  //   console.log(isScrolledIntoView( $('#about') ));
-  // });
-
-  // AUTOMATED SCROLL TO ABOUT
-  // // borrowed from http://blogs.sitepointstatic.com/examples/tech/animation-api/index.html
-  // var anim = document.getElementById("arrow-down"),
-  //     pfx = ["webkit", "moz", "MS", "o", ""];
-
-  // // animation listener events
-  // // PrefixedEvent(anim, "AnimationStart", AnimationListener);
-  // // PrefixedEvent(anim, "AnimationIteration", AnimationListener);
-  // PrefixedEvent(anim, "AnimationEnd", AnimationListener);
-
-
-  // // apply prefixed event handlers
-  // function PrefixedEvent(element, type, callback) {
-  //   for (var p = 0; p < pfx.length; p++) {
-  //     if (!pfx[p]) type = type.toLowerCase();
-  //     element.addEventListener(pfx[p]+type, callback, false);
-  //   }
-  // }
-
-  // var uh = 0;
-
-  // // handle animation events
-  // function AnimationListener(e) {
-  //   // LogEvent("Animation '"+e.animationName+"' type '"+e.type+"' at "+e.elapsedTime.toFixed(2)+" seconds");
-  //   if (e.type.toLowerCase().indexOf("animationend") >= 0) {
-  //     // LogEvent("Stopping animation...");
-
-  //     if (uh >= 1) {
-  //       console.log("let's go");
-  //       var hash = '#about';
-  //       $('html, body').animate({
-  //         scrollTop: $(hash).offset().top
-  //       }, 600, function(){
-     
-  //         // Add hash (#) to URL when done scrolling (default click behavior)
-  //         window.location.hash = hash;
-  //       });
-  //     }
-
-  //     uh += 1;
-  //   }
-  // }
 });
 
 new WOW().init();
@@ -329,25 +197,3 @@ var cbpAnimatedHeader = (function() {
   init();
 
 })();
-
-
-// borrowed from 
-$.fn.extend({
-    animateCss: function (animationName, doOnEnd) {
-        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-        this.addClass('animated ' + animationName).one(animationEnd, function() {
-            $(this).removeClass('animated ' + animationName);
-        });
-    }
-});
-
-// borrowed from 
-$.fn.extend({
-    animateCssFade: function (animationName, doOnEnd) {
-        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-        this.addClass('animated ' + animationName).one(animationEnd, function() {
-            $(this).removeClass('animated ' + animationName);
-            $(this).animateCss('fadeOut');
-        });
-    }
-});
