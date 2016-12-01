@@ -79,7 +79,7 @@ $(document).ready(function(){
   }
 
   function sizeWork(img, scale, anim) {
-    var cont = $(".work-item-pad");
+    var cont = img.parent();
     var contWidth = $(cont).width(); // Max width for the image
     var contWidthScl = contWidth * scale;
     var contHeight = $(cont).height(); // Max height for the image
@@ -94,16 +94,17 @@ $(document).ready(function(){
     // console.log(contRatio, imgRatio);
 
     var overlay = img.parent().find(".work-item-overlay");
-    console.log(overlay);
+    // console.log(overlay);
     overlay.css("width", contWidth);
     overlay.css("height", contHeight);
     overlay.css("top", cont.position().top);
     overlay.css("left", cont.position().left);
 
     if (contRatio > imgRatio) {
+      var newWidth = contWidthScl;
       var newHeight = contWidthScl / imgRatio;
       var offsetY = (newHeight - contHeight) / 2;
-      var offsetX = (contWidthScl - contWidth) / 2;
+      var offsetX = (newWidth - contWidth) / 2;
 
       $(img).animate({
         width: contWidthScl,
@@ -112,24 +113,36 @@ $(document).ready(function(){
         left: -offsetX
       }, fade);
     } else {
-      $(img).css("width", contWidthScl / imgRatio);   // Set new height
-      $(img).css("height", contHeightScl);    // Scale width based on ratio
+      // $(img).css("width", contHeightScl * imgRatio);   // Set new height
+      // $(img).css("height", contHeightScl);    // Scale width based on ratio
 
-      var offsetW = (contHeightScl / contRatio - contHeightScl) / 2;
-      $(img).css("left", -offsetW);
+      // var offsetW = (contHeightScl / contRatio - contHeightScl) / 2;
+      // $(img).css("left", -offsetW);
+
+      var newWidth = contHeightScl * imgRatio;
+      var newHeight = contHeightScl;contHeightScl
+      var offsetY = (newHeight - contHeight) / 2;
+      var offsetX = (newWidth - contWidth) / 2;
+
+      $(img).animate({
+        width: contHeightScl * imgRatio,
+        height: contHeightScl,
+        top: -offsetY,
+        left: -offsetX
+      }, fade);
     }
   };
 
   function sizeAll() {
     $('.work-item-pad img').each(function() {
       sizeWork($(this), 1, false);
-      console.log("size!");
+      // console.log("size!");
     });
   };
 
   $(".work-item-pad").hover(function() {
       //mouse in
-      sizeWork($(this).find("img"), 1.05, true);
+      sizeWork($(this).find("img"), 1.1, true);
     }, function() {
       //mouse out
       sizeWork($(this).find("img"), 1, true);
@@ -141,6 +154,21 @@ $(document).ready(function(){
 
   $(window).ready(function() {
     setWorkRatio();
+  })
+
+  // borrowed from bootstrap
+  // modal 
+  $('#modal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  var image = button.find('img');
+  image.css("width", "100%");
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text(recipient)
+  modal.find('.modal-body #imghere').contents().remove();
+  image.clone().prependTo(modal.find('.modal-body #imghere'));
   })
 
   // // borrowed from http://stackoverflow.com/questions/14425300/scale-image-properly-but-fit-inside-div
