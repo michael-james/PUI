@@ -73,44 +73,67 @@ $(document).ready(function(){
     var contHeight = $(imgContainer).height(); // Max height for the image
     var contRatio = contWidth / contHeight; // Used for cont aspect ratio
     if (contRatio != currentContRatio) {
-      sizeWork();
+      sizeAll();
       currentContRatio = contRatio;
     }
   }
 
-  function sizeWork() {
+  function sizeWork(img, scale, anim) {
+    var cont = $(".work-item-pad");
+    var contWidth = $(cont).width(); // Max width for the image
+    var contWidthScl = contWidth * scale;
+    var contHeight = $(cont).height(); // Max height for the image
+    var contHeightScl = contHeight * scale;
+    var contRatio = contWidthScl / contHeightScl; // Used for cont aspect ratio
+    var imgWidth = $(img).width();    // Current image width
+    var imgHeight = $(img).height();  // Current image height
+    var imgRatio = imgWidth / imgHeight; // Used for img aspect ratio
+    var fade = 0;
+    if (anim) {fade = 400;}
+
+    // console.log(contRatio, imgRatio);
+
+    var overlay = img.parent().find(".work-item-overlay");
+    console.log(overlay);
+    overlay.css("width", contWidth);
+    overlay.css("height", contHeight);
+    overlay.css("top", cont.position().top);
+    overlay.css("left", cont.position().left);
+
+    if (contRatio > imgRatio) {
+      var newHeight = contWidthScl / imgRatio;
+      var offsetY = (newHeight - contHeight) / 2;
+      var offsetX = (contWidthScl - contWidth) / 2;
+
+      $(img).animate({
+        width: contWidthScl,
+        height: contWidthScl / imgRatio,
+        top: -offsetY,
+        left: -offsetX
+      }, fade);
+    } else {
+      $(img).css("width", contWidthScl / imgRatio);   // Set new height
+      $(img).css("height", contHeightScl);    // Scale width based on ratio
+
+      var offsetW = (contHeightScl / contRatio - contHeightScl) / 2;
+      $(img).css("left", -offsetW);
+    }
+  };
+
+  function sizeAll() {
     $('.work-item-pad img').each(function() {
-      var cont = $(".work-item-pad");
-      var contWidth = $(cont).width(); // Max width for the image
-      var contHeight = $(cont).height(); // Max height for the image
-      var contRatio = contWidth / contHeight; // Used for cont aspect ratio
-      var imgWidth = $(this).width();    // Current image width
-      var imgHeight = $(this).height();  // Current image height
-      var imgRatio = imgWidth / imgHeight; // Used for img aspect ratio
-
-      console.log(contRatio, imgRatio);
-
-      var overlay = $(".work-item-overlay");
-      overlay.css("width", contWidth);
-      overlay.css("height", contHeight);
-      overlay.css("top", cont.position().top);
-      overlay.css("left", cont.position().left);
-
-      if (contRatio > imgRatio) {
-        $(this).css("width", contWidth);   // Set new height
-        $(this).css("height", contWidth / imgRatio);    // Scale width based on ratio
-        
-        var offsetH = (contWidth / imgRatio - contHeight) / 2;
-        $(this).css("top", -offsetH);
-      } else {
-        $(this).css("width", contWidth / imgRatio);   // Set new height
-        $(this).css("height", contHeight);    // Scale width based on ratio
-
-        var offsetW = (contHeight / contRatio - contHeight) / 2;
-        $(this).css("left", -offsetW);
-      }
+      sizeWork($(this), 1, false);
+      console.log("size!");
     });
-  }
+  };
+
+  $(".work-item-pad").hover(function() {
+      //mouse in
+      sizeWork($(this).find("img"), 1.05, true);
+    }, function() {
+      //mouse out
+      sizeWork($(this).find("img"), 1, true);
+  });
 
   $(window).resize(function() {
     setWorkRatio();
