@@ -35,6 +35,91 @@ $(document).ready(function(){
       // $('#portrait').animateCss('flipInY')
   });
 
+
+  // // borrowed from http://stackoverflow.com/questions/3971841/how-to-resize-images-proportionally-keeping-the-aspect-ratio
+  //   $('.work-item-pad img').each(function() {
+  //       var imgContainer = $(".work-item-pad");
+  //       var maxWidth = $(imgContainer).width(); // Max width for the image
+  //       var maxHeight = $(imgContainer).height(); // Max height for the image
+  //       var ratio = 0;  // Used for aspect ratio
+  //       var width = $(this).width();    // Current image width
+  //       var height = $(this).height();  // Current image height
+  //       console.log(maxWidth, maxHeight);
+
+  //       // Check if the current width is larger than the max
+  //       if(width > maxWidth){
+  //           ratio = maxWidth / width;   // get ratio for scaling image
+  //           $(this).css("width", maxWidth); // Set new width
+  //           $(this).css("height", height * ratio);  // Scale height based on ratio
+  //           height = height * ratio;    // Reset height to match scaled image
+  //           width = width * ratio;    // Reset width to match scaled image
+  //       }
+
+  //       // Check if current height is larger than max
+  //       if(height > maxHeight){
+  //           ratio = maxHeight / height; // get ratio for scaling image
+  //           $(this).css("height", maxHeight);   // Set new height
+  //           $(this).css("width", width * ratio);    // Scale width based on ratio
+  //           width = width * ratio;    // Reset width to match scaled image
+  //           height = height * ratio;    // Reset height to match scaled image
+  //       }
+  //   });
+
+  var currentContRatio = 0;
+
+  function setWorkRatio () {
+    var imgContainer = $(".work-item-pad");
+    var contWidth = $(imgContainer).width(); // Max width for the image
+    var contHeight = $(imgContainer).height(); // Max height for the image
+    var contRatio = contWidth / contHeight; // Used for cont aspect ratio
+    if (contRatio != currentContRatio) {
+      sizeWork();
+      currentContRatio = contRatio;
+    }
+  }
+
+  function sizeWork() {
+    $('.work-item-pad img').each(function() {
+      var cont = $(".work-item-pad");
+      var contWidth = $(cont).width(); // Max width for the image
+      var contHeight = $(cont).height(); // Max height for the image
+      var contRatio = contWidth / contHeight; // Used for cont aspect ratio
+      var imgWidth = $(this).width();    // Current image width
+      var imgHeight = $(this).height();  // Current image height
+      var imgRatio = imgWidth / imgHeight; // Used for img aspect ratio
+
+      console.log(contRatio, imgRatio);
+
+      var overlay = $(".work-item-overlay");
+      overlay.css("width", contWidth);
+      overlay.css("height", contHeight);
+      overlay.css("top", cont.position().top);
+      overlay.css("left", cont.position().left);
+
+      if (contRatio > imgRatio) {
+        $(this).css("width", contWidth);   // Set new height
+        $(this).css("height", contWidth / imgRatio);    // Scale width based on ratio
+        
+        var offsetH = (contWidth / imgRatio - contHeight) / 2;
+        $(this).css("top", -offsetH);
+      } else {
+        $(this).css("width", contWidth / imgRatio);   // Set new height
+        $(this).css("height", contHeight);    // Scale width based on ratio
+
+        var offsetW = (contHeight / contRatio - contHeight) / 2;
+        $(this).css("left", -offsetW);
+      }
+    });
+  }
+
+  $(window).resize(function() {
+    setWorkRatio();
+  });
+
+  $(window).ready(function() {
+    setWorkRatio();
+  })
+
   // // borrowed from http://stackoverflow.com/questions/14425300/scale-image-properly-but-fit-inside-div
   // $('img').on('bestfit',function(){
   //   var css;
