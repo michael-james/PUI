@@ -330,9 +330,22 @@ footer.footer {
     border-radius: 0 !important;
 }
 
+.modal-imgcont {
+	position: relative;
+	overflow: hidden;
+	width: 100.05%;
+	height: 500px;
+}
+
 .modal-body img {
 	width: 100%;
 	height: auto;
+	vertical-align: middle;
+	position: absolute;
+	margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 @media(min-width:992px) {
