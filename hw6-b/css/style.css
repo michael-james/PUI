@@ -43,8 +43,23 @@ span.span-title {
     -moz-transition: top 500ms ease;
     transition: top 500ms ease;
 
-	background-color: rgba(112, 89, 255, 0.3);
-	border-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(112, 89, 255, 0.5);
+	/*border-color: rgba(255, 255, 255, 0.5);*/
+	border: none;
+}
+
+/*.navbar-default {
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+    background-image: url("../assets/bkg3.png");
+    opacity: 0.5;
+}*/
+
+.navbar-toggle {
+	background-color: #ddd; /*rgb(255, 255, 255);*/
 }
 
 .navbar-default .navbar-text {
@@ -68,7 +83,7 @@ span.span-title {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
 	color: rgba(255, 255, 255, 1);
-	background-color: rgba(112, 89, 255, 0.3);
+	background-color: rgba(112, 89, 255, 0.6);
 	font-weight: 700;
 }
 
@@ -83,11 +98,15 @@ header {
     width: auto;
     height: auto;
     min-height: 100%;
-    -webkit-background-size: cover;
+}
+
+.bk-paper {
+	-webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
     background-attachment: fixed;
+    background-image: url("../assets/bkg3.png");
 }
 
 .intro-text {
@@ -142,6 +161,10 @@ a.fancy {
 	background-repeat: no-repeat;
 }
 
+a.no-bord {
+	border-bottom: none ;
+}
+
 a.fancy:link, a.fancy:visited {
 	color: rgba( 0,0,0, 0.6);
 	text-decoration: none;
@@ -167,11 +190,13 @@ a.fancy:hover {
 
 #portrait {
 	width: 215px;
+	margin: 0 auto;
+	display: inherit;
 }
 
 #portrait-cont {
 	float: none;
-	margin: 0px 20px 15px 0px;
+	margin: 0px 0px 15px 0px;
 }
 
 .work {
@@ -327,6 +352,11 @@ footer.footer {
 
 	#portrait-cont {
 		float: left;
+		margin: 0px 20px 15px 0px;
+	}
+
+	#portrait {
+		margin: auto;
 	}
 
 	.modal-dialog {
@@ -345,12 +375,12 @@ footer.footer {
     header {
         width: 100%;
         height: 100%;
-        background-attachment: scroll;
+        /*background-attachment: scroll;*/
     }
 }
 
 @media(min-width:992px) {
     header {
-        background-attachment: fixed;
+        /*background-attachment: fixed;*/
     }
 }
