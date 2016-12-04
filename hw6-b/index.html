@@ -30,13 +30,15 @@
     <!-- I was inspired by design patterns on the following websites: colin-budd.com, daraghbyrne.me, ideo.com-->
   </head>
 
+  <!-- sets up bootstrap scrollspy -->
   <body data-spy="scroll" data-target=".navbar" data-offset="51">
 
+    <!-- navbar -->
     <nav class="navbar navbar-default navbar-fixed-top navbar-hidden">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <button type="button" id="btn-collapse" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -69,6 +71,7 @@
       </div><!-- /.container-fluid -->
     </nav>
 
+    <!-- landing with my name -->
     <header id="intro" class="bk-p bk-paper">
       <div class="intro-text center">
         <a class="fancy accent wow fadeIn" data-wow-delay=".2s" id="my-name" href="#about">michael james</a>
@@ -83,6 +86,7 @@
       </div>
     </header>
 
+    <!-- my story -->
     <section id="about">
       <div id="story" class="container wow fadeIn" data-wow-delay=".4s">
         <h1 class="center">
@@ -107,12 +111,14 @@
       </div>
     </section>
 
+    <!-- portfolio work -->
     <section id="work" class="bk-p bk-paper">
       <div class="container">
         <h1 class="center wow fadeIn" data-wow-delay=".4s">
           work
         </h1>
 
+        <!-- porfolio: interaction design -->
         <div id="interaction" class="work wow fadeIn" data-wow-delay=".4s">
           <h1 class="work-cat">
             interaction design
@@ -122,12 +128,12 @@
           </div>
           <div class="work-cont row">
             <div class="work-item col-md-4">
-              <a data-toggle="modal" data-target="#modal" data-whatever="Loop">
+              <a data-toggle="modal" data-target="#modal" data-whatever="Echo">
                 <div class="work-item-pad">
                 <img src="assets/thumb/simon.jpg" data-wy="70" data-ny=""></img>
                 <div class="work-item-overlay">
                   <div class="work-item-label">
-                    Loop
+                    Echo
                     <p>educational service</p>
                   </div>
                 </div>
@@ -163,6 +169,7 @@
           </div>
         </div>
 
+        <!-- porfolio: theatrical design -->
         <div id="theatre" class="work wow fadeIn" data-wow-delay=".4s">
           <h1 class="work-cat">
             theatrical design
@@ -226,6 +233,7 @@
           </div>
         </div>
 
+        <!-- porfolio: visual stories -->
         <div id="visual" class="work wow fadeIn" data-wow-delay=".4s">
           <h1 class="work-cat">
             visual stories
@@ -276,6 +284,7 @@
           </div>
         </div>
 
+        <!-- porfolio: mediation -->
         <div id="mediation" class="work wow fadeIn" data-wow-delay=".4s">
           <h1 class="work-cat">
             mediation
@@ -316,6 +325,7 @@
       </div>
     </section>
 
+    <!-- interaction design + drama -->
     <section id="crossover" class="">
       <div class="container">
         <div class="wow fadeIn" data-wow-delay=".2s">
@@ -328,7 +338,7 @@
           </div>
         </div>
 
-        <!-- crossover: row 1 -->
+        <!-- ixd+drama: row 1 -->
         <div class="row wow fadeIn" data-wow-delay=".4s">
           <div class="col-md-3 cross-item">
             <div class="cross-item-title">
@@ -367,7 +377,7 @@
           </div>
         </div>
 
-        <!-- crossover: row 2 -->
+        <!-- ixd+drama: row 2 -->
         <div class="row wow fadeIn" data-wow-delay=".5s">
           <div class="col-md-3 cross-item">
             <div class="cross-item-title">
@@ -406,7 +416,7 @@
           </div>
         </div>
 
-        <!-- crossover: row 3 -->
+        <!-- ixd+drama: row 3 -->
         <div class="row wow fadeIn" data-wow-delay=".6s">
           <div class="col-md-3 cross-item">
             <div class="cross-item-title">
@@ -447,6 +457,7 @@
       </div>
     </section>
 
+    <!-- footer -->
     <footer id="more" class="footer bk-p bk-paper">
       <div class="container center">
           email me at <a class="fancy" href="mailto:mj@michaeljames.design">mj@michaeljames.design</a></br>
@@ -501,7 +512,6 @@
 
       <!-- plugins -->
       <script src="js/plugins/wow.min.js"></script>
-      <script src="js/plugins/modernizr-custom.js"></script>
       
       <!-- my Javascript -->
       <script src="js/myscript.js"></script>
